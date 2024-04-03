@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\crudController;
 use App\Http\Controllers\demoController;
+use App\Http\Controllers\StudentController;
 use App\Http\Controllers\testController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,10 +32,12 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('/test', [testController::class, 'index']);
+Route::get('/index', [StudentController::class, 'index'])->name('index');
+Route::get('/create', [StudentController::class, 'create'])->name('create');
+Route::post('/store', [StudentController::class, 'store'])->name('store');
+Route::get('/show/{id}', [StudentController::class, 'show'])->name('show');
+Route::delete('/delete/{id}', [StudentController::class, 'delete'])->name('delete');
 
-Route::get('/demo', function () {
-    return view('test.controler');
-});
 
-Route::get('/test/{name}/{boyosh}', [demoController::class, 'index']); // url parameter
-Route::get('/info', [demoController::class, 'info']); //input
+
+Route::put('/edit', [StudentController::class, 'edit']);
